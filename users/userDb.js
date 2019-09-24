@@ -23,7 +23,12 @@ function findById(id) {
 function add(user) {
   return db('users')
     .insert(user)
-    // .then(ids => ({ id: ids[0] }));
+    .then(id => {
+      
+      console.log('id', id)
+      // const [id] = id;
+      return findById(id)
+    });
 
 }
 

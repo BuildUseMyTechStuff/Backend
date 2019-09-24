@@ -1,4 +1,5 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -11,7 +12,7 @@ router.post('/register', (req, res) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 15);
     user.password = hash;
-  
+    console.log('user', user)
     Users.add(user)
     .then(saved => {
       const token = generateToken(saved);
