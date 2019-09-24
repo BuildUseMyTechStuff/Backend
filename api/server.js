@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 require('dotenv').config()
 
+// const authenticate = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const userRouter = require('../users/userRouter.js');
 
@@ -21,5 +22,6 @@ server.get('/', (req, res) => {
 
 
 
+    
 
 module.exports = server;

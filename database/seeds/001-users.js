@@ -44,3 +44,22 @@ exports.seed = function(knex, Promise) {
 }
     ]);
 };
+
+
+// {
+//     id: 1,
+//     username: "george",
+//     password: "gotit"
+// },
+// {
+//     id: 2,
+//     username: "boston",
+//     password: "word1"
+// },
+// {
+//     id: 3,
+//     username: "rachel",
+//     password: "homepl"
+// }
+//   ]);
+// }
