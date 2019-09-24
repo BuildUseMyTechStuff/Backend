@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const Users =require('./userDb');
+const Users =require('../users/userDb');
 
 
 //POST user
 router.post('/', validateUser, (req, res) => {
-    Users.insert(req.body)
+    let newUser = req.body;
+    Users.add(newUser)
     .then(user => {
         res.status(201).json(user);
     })
@@ -20,8 +21,8 @@ router.post('/', validateUser, (req, res) => {
 
 
 //GET users
-router.get('/users', (req, res) => {
-    Users.get()
+router.get('/', (req, res) => {
+    Users.find('users')
         .then(users => {
             res.status(200).json(users);
         })
@@ -34,8 +35,8 @@ router.get('/users', (req, res) => {
 });
 
 //GET user by Id
-router.get('/:id', validateUserId, (req, res) => {
-    Users.getById(req.params.id)
+router.get('/:id/user', validateUserId, (req, res) => {
+    Users.findById(req.params.id)
     .then(user => {
         res.status(200).json(user);
     })
@@ -48,7 +49,7 @@ router.get('/:id', validateUserId, (req, res) => {
 });
 
 //Put user
-router.put('/:id', validateUser, validateUserId, (req, res) => {
+router.put('/users/:id', validateUser, validateUserId, (req, res) => {
     const id = req.params.id;
     const changes = req.body;
         Users.update(id, changes)
@@ -64,7 +65,7 @@ router.put('/:id', validateUser, validateUserId, (req, res) => {
 });
 
 //DELETE user
-router.delete('/:id', validateUserId, (req, res) => {
+router.delete('/users:id', validateUserId, (req, res) => {
     const id = req.params.id;
         Users.remove(id)
         .then(user => {
@@ -81,7 +82,7 @@ router.delete('/:id', validateUserId, (req, res) => {
 //custom middleware
 function validateUserId(req, res, next) {
     const { id } = req.params;
-    Users.getById(id)
+    Users.findById(id)
     .then(user => {
       if (user) {
         next();
@@ -106,13 +107,6 @@ function validateUser(req, res, next) {
       }
 };
 
-function validatePost(req, res, next) {
-    if (req.body && Object.keys(req.body).length > 0) {
-    next();
-      } else {
-        next({ message: 'BAD REQUEST!.' });
-      }
-};
 
 
 module.exports = router;

@@ -1,47 +1,42 @@
-const db = require('../database/dbConfig.js');
+const knex = require('knex');
+const knexConfig = require('../knexfile.js');
+const db = knex(knexConfig.development);
 
 module.exports = {
-  get,
-  getById,
-  getUserPosts,
-  insert,
+  add,
+  find,
+  findById,
   update,
   remove,
 };
 
-function get() {
-  return db('users').select('username', 'password');
+function find() {
+  return db('users').select('id', 'email', 'first_name', 'last_name', 'avatar');
 }
 
-function getById(id) {
+function findById(id) {
   return db('users')
     .where({ id })
     .first();
 }
 
-function getUserPosts(userId) {
-  return db('posts as p')
-    .join('users as u', 'u.id', 'p.user_id')
-    .select('p.id', 'p.text', 'u.name as postedBy')
-    .where('p.user_id', userId);
-}
-
-function insert(user) {
+function add(user) {
   return db('users')
     .insert(user)
-    .then(ids => {
-      return getById(ids[0]);
-    });
+    // .then(ids => ({ id: ids[0] }));
+
 }
 
-function update(id, changes) {
+function update(id, user) {
   return db('users')
-    .where({ id })
-    .update(changes);
+    .where('id', Number(id))
+    .update(user);
 }
 
 function remove(id) {
   return db('users')
-    .where('id', id)
+    .where('id', Number(id))
     .del();
 }
+
+
