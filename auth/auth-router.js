@@ -12,12 +12,12 @@ router.post('/register', (req, res) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
-    console.log('user15', user)
+    
     Users.add(user)
     .then(saved => {
-      console.log('saved', saved)
+      
       const token = generateToken(saved);
-      console.log('token', token)
+      
       res.status(201).json({saved,
         user: saved,
         token
@@ -35,14 +35,15 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res) => {
 
     let { full_name, password } = req.body;
-    // console.log('full_name, password', full_name, password)
+    
     Users.findByUsername( full_name )
-      .then(res => {
-        const user = res [0]
-        // console.log('user', user)
+      .then(data => {
+        
+        const user = data [0]
+        
         if (user && bcrypt.compareSync(password, user.password)) {
           const token = generateToken(user);
-          // console.log('token', token)
+         
           res.status(200).json({
             message: `Welcome ${user.full_name}!`,
 
@@ -52,7 +53,9 @@ router.post('/login', (req, res) => {
           res.status(401).json({ message: 'Please try again' });
         }
       })
+    
       .catch(error => {
+        console.log('error', error)
         res.status(500).json(error);
       });
   });
