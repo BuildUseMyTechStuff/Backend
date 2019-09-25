@@ -7,6 +7,7 @@ const Users =require('../users/userDb');
 //POST user
 router.post('/', validateUser, (req, res) => {
     const newUser = req.body;
+    console.log('newUser', newUser)
     Users.add(newUser)
     .then(user => {
         res.status(201).json(user);

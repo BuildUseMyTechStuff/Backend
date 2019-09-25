@@ -1,35 +1,37 @@
 const knex = require('knex');
 const knexConfig = require('../knexfile.js');
-const db = knex(knexConfig.development);
+const db = require('../database/dbConfig.js');
 
 module.exports = {
   add,
   find,
-  findById,
+  findByUsername,
   update,
   remove,
 };
 
 function find() {
-  return db('users').select('id', 'email', 'first_name', 'last_name', 'avatar');
+  return db('users').select('id', 'full_name', 'email', 'password');
 }
 
-function findById(id) {
+function findByUsername(full_name) {
   return db('users')
-    .where({ id })
-    .first();
+    .where({ full_name })
 }
 
 function add(user) {
   return db('users')
     .insert(user)
-    .then(id => {
-      
-      console.log('id', id)
-      // const [id] = id;
-      return findById(id)
+    .then(res => {
+      const id = res[0];
+      return findById(id);
     });
 
+}
+
+function findById(id) {
+  return db('users')
+  .where({ id })
 }
 
 function update(id, user) {

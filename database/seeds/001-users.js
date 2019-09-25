@@ -1,65 +1,22 @@
 exports.seed = function(knex, Promise) {
   return knex('users').insert([
-{   
-    id: 7,
-    email: "michael.lawson@reqres.in",
-    first_name: "Michael",
-    last_name: "Lawson",
-    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/follettkyle/128.jpg", // 1
-  },
-  {
-    id: 8,
-    email: "lindsay.ferguson@reqres.in",
-    first_name: "Lindsay",
-    last_name: "Ferguson",
-    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/araa3185/128.jpg"
-},
 {
-    id: 9,
-    email: "tobias.funke@reqres.in",
-    first_name: "Tobias",
-    last_name: "Funke",
-    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/vivekprvr/128.jpg"
-},
-{
-    id: 10,
-    email: "byron.fields@reqres.in",
-    first_name: "Byron",
-    last_name: "Fields",
-    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/russoedu/128.jpg"
-},
-{
-    id: 11,
+    id: 1,
+    full_name: "george",
     email: "george.edwards@reqres.in",
-    first_name: "George",
-    last_name: "Edwards",
-    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/mrmoiree/128.jpg"
+    password: "gotit"
 },
 {
-    id: 12,
+    id: 2,
+    full_name: "boston",
+    email: "byron.fields@reqres.in",
+    password: "word1"
+},
+{
+    id: 3,
+    full_name: "rachel",
     email: "rachel.howell@reqres.in",
-    first_name: "Rachel",
-    last_name: "Howell",
-    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/hebertialmeida/128.jpg"
+    password: "homepl"
 }
-    ]);
-};
-
-
-// {
-//     id: 1,
-//     username: "george",
-//     password: "gotit"
-// },
-// {
-//     id: 2,
-//     username: "boston",
-//     password: "word1"
-// },
-// {
-//     id: 3,
-//     username: "rachel",
-//     password: "homepl"
-// }
-//   ]);
-// }
+  ]);
+}
