@@ -4,7 +4,7 @@ const helmet = require('helmet');
 const session = require('express-session');
 require('dotenv').config()
 
-// const authenticate = require('../auth/authenticate-middleware.js');
+const authenticate = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const userRouter = require('../users/userRouter.js');
 
@@ -28,7 +28,7 @@ server.use(express.json());
 server.use(session(sessionConfig))
 
 server.use('/api/auth', authRouter);
-server.use('/api/users', userRouter)
+server.use('/api/users',authenticate, userRouter)
 
 server.get('/', (req, res) => {
     res.send('We are good to go!');
