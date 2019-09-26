@@ -34,19 +34,17 @@ router.post('/register', (req, res) => {
 //implement login
 router.post('/login', (req, res) => {
 
-    let { full_name, password } = req.body;
-    
-    Users.findByUsername( full_name )
+    let { email, password } = req.body;
+
+    Users.findByUsername( email )
       .then(data => {
-        
         const user = data [0]
-        
         if (user && bcrypt.compareSync(password, user.password)) {
           const token = generateToken(user);
          
           res.status(200).json({
-            message: `Welcome ${user.full_name}`,
-
+            id: `${ user.id }`,
+            message: `Welcome ${user.email}`,
             token
           });
         } else {
@@ -63,7 +61,7 @@ router.post('/login', (req, res) => {
   function generateToken(user) {
     const payload = {
       sub: user.id, 
-      username: user.full_name
+      username: user.email
     };
     const secret =  process.env.JWT_SECRET;
     const options = {

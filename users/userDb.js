@@ -11,16 +11,16 @@ module.exports = {
 };
 
 function find() {
-  return db('users').select('id', 'full_name', 'email', 'password');
+  return db('users-data').select('email', 'password');
 }
 
-function findByUsername(full_name) {
-  return db('users')
-    .where({ full_name })
+function findByUsername(email) {
+  return db('users-data')
+    .where({ email })
 }
 
 function add(user) {
-  return db('users')
+  return db('users-data')
     .insert(user)
     .then(res => {
       const id = res[0];
@@ -30,18 +30,18 @@ function add(user) {
 }
 
 function findById(id) {
-  return db('users')
+  return db('users-data')
   .where({ id })
 }
 
 function update(id, user) {
-  return db('users')
+  return db('users-data')
     .where('id', Number(id))
     .update(user);
 }
 
 function remove(id) {
-  return db('users')
+  return db('users-data')
     .where('id', Number(id))
     .del();
 }

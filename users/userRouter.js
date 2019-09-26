@@ -36,8 +36,8 @@ router.get('/', (req, res) => {
 
 //GET user by Id
 router.get('/:id/user', validateUserId, (req, res) => {
-    const full_name  = req.params;
-    Users.findByUsername(full_name)
+    const email  = req.params;
+    Users.findByUsername(email)
     .then(user => {
         res.status(200).json(user);
     })
@@ -51,9 +51,9 @@ router.get('/:id/user', validateUserId, (req, res) => {
 
 //Put user
 router.put('/users/:id', validateUser, validateUserId, (req, res) => {
-    const full_name = req.params;
+    const email = req.params;
     const changes = req.body;
-        Users.update(full_name, changes)
+        Users.update(email, changes)
         .then(post => {
             res.status(201).json(post);
         })
@@ -69,8 +69,8 @@ router.put('/users/:id', validateUser, validateUserId, (req, res) => {
 router.delete('/users:id', validateUserId, (req, res) => {
     const user = req.params.id;
         Users.remove(user)
-        .then(data => {
-            res.status(200).json(data);
+        .then(user => {
+            res.status(200).json(user);
         })
         .catch(err => {
         res.status(500).json({
@@ -82,9 +82,8 @@ router.delete('/users:id', validateUserId, (req, res) => {
 
 //custom middleware
 function validateUserId(req, res, next) {
-    const full_name  = req.params;
-    console.log('full_name', full_name)
-    Users.findByUsername(full_name)
+    const email  = req.params;
+    Users.findByUsername(email)
     .then(user => {
       if (user) {
         next();
