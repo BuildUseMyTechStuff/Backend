@@ -19,9 +19,9 @@ function findByUsername(email) {
     .where({ email })
 }
 
-function add(user) {
+function add(email) {
   return db('users-data')
-    .insert(user)
+    .insert(email)
     .then(res => {
       const id = res[0];
       return findById(id);
