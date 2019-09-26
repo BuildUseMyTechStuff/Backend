@@ -12,13 +12,12 @@ exports.up = function(knex) {
         .notNullable()
       users.string('password', 128)
       .notNullable();
-      users
-        .string("token", 200)
-        .notNullable();
     })
-    .createTable('drone-rental', tbl => {
-      
-    })
+    // .createTable('drone-rental', tbl => {
+    //   tbl.increments()
+
+
+    // })
   };
   
   exports.down = function(knex, Promise) {
