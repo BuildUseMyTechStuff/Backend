@@ -80,6 +80,37 @@ router.delete('/users:id', validateUserId, (req, res) => {
     });
 });
 
+//GET all drone rentals
+router.get('/drones', (req, res) => {
+    Users.find('dronerental')
+
+    .then(dronerental => {
+      res.status(200).json(dronerental);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+  });
+
+  //POST add drone
+  router.post('/add-drone', (req, res) => {
+    const addDrone = req.body;
+    Users.add(addDrone)
+    .then(user => {
+        res.status(201).json(user);
+    })
+    .catch(err => {
+        res.status(500).json({
+            err:err,
+            message: 'Error adding drone.'
+        })
+    })
+});
+
+
+
+
+
 //custom middleware
 function validateUserId(req, res, next) {
     const email  = req.params;

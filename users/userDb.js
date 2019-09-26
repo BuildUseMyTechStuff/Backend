@@ -14,6 +14,10 @@ function find() {
   return db('users-data').select('full_name', 'email', 'password');
 }
 
+function find() {
+  return db('drone-rental').select("Name", "Model", "Brand", "Purpose", "Experience Level", "Cost", "Link", "Photographer");
+}
+
 function findByUsername(email) {
   return db('users-data')
     .where({ email })
@@ -26,7 +30,15 @@ function add(email) {
       const id = res[0];
       return findById(id);
     });
+}
 
+function add(addDrone) {
+  return db('users-data')
+    .insert(addDrone)
+    .then(res => {
+      const id = res[0];
+      return findById(id);
+    });
 }
 
 function findById(id) {

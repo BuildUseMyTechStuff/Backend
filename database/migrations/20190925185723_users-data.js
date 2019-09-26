@@ -13,17 +13,10 @@ exports.up = function(knex) {
       users.string('password', 128)
       .notNullable();
     })
-    // .createTable('drone-rental', tbl => {
-    //   tbl.increments()
-
-
-    // })
   };
   
   exports.down = function(knex, Promise) {
-    return knex.schema
-    
-    .dropTableIfExists('users');
+    return knex.schema.dropTableIfExists('users');
   };
 
 // exports.up = function(knex) {
