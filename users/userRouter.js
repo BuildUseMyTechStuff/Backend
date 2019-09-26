@@ -92,7 +92,7 @@ router.get('/drones', (req, res) => {
     });
   });
 
-  //POST add drone
+  //POST add  a drone
   router.post('/add-drone', (req, res) => {
     const addDrone = req.body;
     Users.add(addDrone)
@@ -106,6 +106,8 @@ router.get('/drones', (req, res) => {
         })
     })
 });
+
+//GET list of available/rented drones
 
 
 
