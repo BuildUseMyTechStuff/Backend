@@ -2,15 +2,16 @@
 exports.up = function(knex) {
     return knex.schema.createTable('users-data', users => {
       users.increments()
-        .integer('id', 128)
-        notNullable();
-  
+
       
       users
         .string('email', 128)
         .notNullable()
       users.string('password', 128)
       .notNullable();
+      users
+        .string("token", 200)
+        .notNullable();
     });
   };
   
