@@ -14,9 +14,9 @@ function find() {
   return db('users-data').select('full_name', 'email', 'password');
 }
 
-function findByUsername(full_name) {
+function findByUsername(email) {
   return db('users-data')
-    .where({ full_name })
+    .where({ email })
 }
 
 function add(email) {

@@ -16,6 +16,9 @@ exports.up = function(knex) {
         .string("token", 200)
         .notNullable();
     })
+    .createTable('drone-rental', tbl => {
+      
+    })
   };
   
   exports.down = function(knex, Promise) {
