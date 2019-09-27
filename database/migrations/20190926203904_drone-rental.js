@@ -28,6 +28,25 @@ exports.up = function(knex) {
         .string('Photographer', 200)
         .notNullable();
       })
+    .createTable('equipment owners', tbl => {
+      tbl.increments()
+  
+      tbl
+        .string('available drones', 128)
+        .notNullable();
+      tbl
+        .string('rented drones')
+        .notNullable();
+
+      })
+    .createTable('renters', tbl => {
+      tbl.increments()
+
+      tbl
+        .string('rented drones')
+        .notNullable();
+
+      })
   };
   
   exports.down = function(knex) {
