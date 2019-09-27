@@ -23,10 +23,10 @@ function findByUsername(email) {
     .where({ email })
 }
 
-function findByUsername(name) {
-  return db('drone-rental')
-  .where({ name })
-}
+// function findByUsername(name) {
+//   return db('drone-rental')
+//   .where({ name })
+// }
 
 function add(email) {
   return db('users-data')
