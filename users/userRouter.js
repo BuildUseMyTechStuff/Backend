@@ -67,10 +67,10 @@ router.put('/users/:id', validateUser, validateUserId, (req, res) => {
 
 //DELETE user
 router.delete('/users:id', validateUserId, (req, res) => {
-    const user = req.params.id;
+    const user = req.params;
         Users.remove(user)
-        .then(user => {
-            res.status(200).json(user);
+        .then(deleted => {
+            res.status(200).json({removed: deleted});
         })
         .catch(err => {
         res.status(500).json({
@@ -82,11 +82,11 @@ router.delete('/users:id', validateUserId, (req, res) => {
 
 //GET all drone rentals
 router.get('/drones', (req, res) => {
-    const name = req.body;
-    Users.findByUsername(name)
-    .then(dronerental => {
+    let dronerental = req.body;
+    Users.findResourceById(dronerental)
+    .then(id => {
         console.log('dronerental', dronerental)
-      res.status(200).json(dronerental);
+      res.status(200).json(id);
     })
     .catch(error => {
       res.status(500).json(error);

@@ -6,6 +6,7 @@ module.exports = {
   add,
   find,
   findByUsername,
+  findResourceById,
   update,
   remove,
 };
@@ -14,13 +15,20 @@ function find() {
   return db('users-data').select('full_name', 'email', 'password');
 }
 
-function find() {
-  return db('drone-rental').select("Name", "Model", "Brand", "Purpose", "Experience Level", "Cost", "Link", "Photographer");
-}
+// function find() {
+//   return db('drone-rental').select("id", "Name", "Model", "Brand", "Purpose", "Experience Level", "Cost", "Link", "Photographer");
+// }
 
 function findByUsername(email) {
   return db('users-data')
     .where({ email })
+}
+
+function findResourceById(name) {
+  return db('drone-rental')
+    .where({ name })
+    
+    
 }
 
 // function findByUsername(name) {
@@ -58,10 +66,10 @@ function update(id, user) {
     .update(user);
 }
 
-function remove(id) {
+function remove(user) {
   return db('users-data')
-    .where('id', Number(id))
-    .del();
+    .where({id: id})
+    .del(user);
 }
 
 

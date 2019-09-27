@@ -3,6 +3,7 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('drone-rental').insert([
         {
+          id: 1,
           Name: "DJI Phantom 4",
           Model: "Phantom 4",
           Brand: "DJI",
@@ -13,6 +14,7 @@ exports.seed = function(knex, Promise) {
           Photographer: "Aditya Chinchure"
         },
         {
+          id: 2,
           Name: "DJI Phantom",
           Model: "Phantom 1",
           Brand: "DJI",
@@ -23,6 +25,7 @@ exports.seed = function(knex, Promise) {
           Photographer: "Jason Blackeye"
         },
         {
+          id: 3,
           Name: "DJI Phantom 3",
           Model: "Phantom 3",
           Brand: "DJI",
@@ -33,6 +36,7 @@ exports.seed = function(knex, Promise) {
           Photographer: "Jason Blackeye"
         },
         {
+          id: 4,
           Name: "DJI Mavic Pro",
           Model: "Mavic Pro",
           Brand: "DJI",
@@ -43,6 +47,7 @@ exports.seed = function(knex, Promise) {
           Photographer: "Josh Sorenson"
         },
         {
+          id: 5,
           Name: "DJI Phantom",
           Model: "Phantom 1",
           Brand: "DJI",
@@ -53,6 +58,7 @@ exports.seed = function(knex, Promise) {
           Photographer: "Andreas Dress"
         },
         {
+          id: 6,
           Name: "QuadDrone",
           Model: "QuadDrone",
           Brand: "Yuneec",
