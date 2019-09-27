@@ -4,6 +4,7 @@ const db = require('../database/dbConfig.js');
 
 module.exports = {
   add,
+  addBy,
   find,
   findByUsername,
   findResourceById,
@@ -25,7 +26,7 @@ function findByUsername(email) {
 }
 
 function findResourceById(name) {
-  return db('drone-rental').select("name", "Model", "Brand", "Purpose", "Experience Level", "Cost", "Link", "Photographer")
+  return db('drone-rental')
     .where({ name });
     
     
@@ -45,14 +46,14 @@ function add(email) {
     });
 }
 
-// function add(addDrone) {
-//   return db('drone-rental')
-//     .insert(addDrone)
-//     .then(res => {
-//       const name = res[0];
-//       return findById(name);
-//     });
-// }
+function addBy(addDrone) {
+  return db('drone-rental')
+    .insert(addDrone)
+    .then(res => {
+      const name = res[0];
+      return findById(name);
+    });
+}
 
 function findById(id) {
   return db('users-data')
@@ -68,7 +69,7 @@ function update(id, user) {
 
 function remove(user) {
   return db('users-data')
-    .where({id: id})
+    // .where({ id: id })
     .del(user);
 }
 
