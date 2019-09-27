@@ -82,9 +82,10 @@ router.delete('/users:id', validateUserId, (req, res) => {
 
 //GET all drone rentals
 router.get('/drones', (req, res) => {
-    Users.find('dronerental')
-
+    const name = req.body;
+    Users.findByUsername(name)
     .then(dronerental => {
+        console.log('dronerental', dronerental)
       res.status(200).json(dronerental);
     })
     .catch(error => {
@@ -140,6 +141,10 @@ function validateUser(req, res, next) {
         next({ message: 'BAD REQUEST!.' });
       }
 };
+
+// function validateUser(req, res, next) {
+//     const 
+// }
 
 
 

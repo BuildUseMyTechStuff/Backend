@@ -1,7 +1,7 @@
 
 exports.seed = function(knex, Promise) {
       // Inserts seed entries
-      return knex('dronerental').insert([
+      return knex('drone-rental').insert([
         {
           Name: "DJI Phantom 4",
           Model: "Phantom 4",

@@ -23,6 +23,11 @@ function findByUsername(email) {
     .where({ email })
 }
 
+function findByUsername(name) {
+  return db('drone-rental')
+  .where({ name })
+}
+
 function add(email) {
   return db('users-data')
     .insert(email)
@@ -33,11 +38,11 @@ function add(email) {
 }
 
 function add(addDrone) {
-  return db('users-data')
+  return db('drone-rental')
     .insert(addDrone)
     .then(res => {
-      const id = res[0];
-      return findById(id);
+      const name = res[0];
+      return findById(name);
     });
 }
 
@@ -45,6 +50,7 @@ function findById(id) {
   return db('users-data')
   .where({ id })
 }
+
 
 function update(id, user) {
   return db('users-data')
