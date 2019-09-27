@@ -2,7 +2,17 @@
 
 Build week for **WEB Unit 4 Node Build** 
 
-### Design and build the following endpoints.
+## Prerequisites
+ [SQLite Studio](https://sqlitestudio.pl/index.rvt?act=download) installed.
+
+A REST client alike [Insomnia](https://insomnia.rest/download/)
+
+Create [Heroku] account for production deployment (https://www.heroku.com/)
+
+
+
+
+## CRUD Endpoints
 
 | POST | /api/auth/register | Creates a `user` using the information sent inside the `body` of the request|
 
@@ -12,5 +22,12 @@ Build week for **WEB Unit 4 Node Build**
 
 | PUT | /api/users/users/:id | Updates a given user id|
 
-- | DELETE | /api/users/users/:id | Removes a given user and all associated data|
+| DELETE | /api/users/users/:id | Removes a given user and all associated data|
+
+
+**Trello link**
+(https://trello.com/b/MY9LDHG7/use-my-tech-stuff)  A visual overview of what is being worked on and who is working on it.
+
+
+
 
