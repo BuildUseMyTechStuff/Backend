@@ -37,14 +37,14 @@ function add(email) {
     });
 }
 
-function add(addDrone) {
-  return db('drone-rental')
-    .insert(addDrone)
-    .then(res => {
-      const name = res[0];
-      return findById(name);
-    });
-}
+// function add(addDrone) {
+//   return db('drone-rental')
+//     .insert(addDrone)
+//     .then(res => {
+//       const name = res[0];
+//       return findById(name);
+//     });
+// }
 
 function findById(id) {
   return db('users-data')
