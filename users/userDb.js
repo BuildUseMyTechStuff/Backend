@@ -25,8 +25,8 @@ function findByUsername(email) {
 }
 
 function findResourceById(name) {
-  return db('drone-rental')
-    .where({ name })
+  return db('drone-rental').select("name", "Model", "Brand", "Purpose", "Experience Level", "Cost", "Link", "Photographer")
+    .where({ name });
     
     
 }

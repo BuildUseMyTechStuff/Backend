@@ -22,7 +22,7 @@ router.post('/', validateUser, (req, res) => {
 
 //GET users
 router.get('/', (req, res) => {
-    Users.find('users')
+    Users.find()
         .then(users => {
             res.status(200).json(users);
         })
@@ -82,11 +82,11 @@ router.delete('/users:id', validateUserId, (req, res) => {
 
 //GET all drone rentals
 router.get('/drones', (req, res) => {
-    let dronerental = req.body;
-    Users.findResourceById(dronerental)
-    .then(id => {
+    // let dronerental = req.body;
+    Users.findResourceById()
+    .then(dronerental => {
         console.log('dronerental', dronerental)
-      res.status(200).json(id);
+      res.status(200).json(dronerental);
     })
     .catch(error => {
       res.status(500).json(error);
