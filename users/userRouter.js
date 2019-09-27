@@ -142,9 +142,6 @@ function validateUser(req, res, next) {
       }
 };
 
-// function validateUser(req, res, next) {
-//     const 
-// }
 
 
 
