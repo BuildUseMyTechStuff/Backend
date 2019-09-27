@@ -3,9 +3,9 @@
 Build week for **WEB Unit 4 Node Build** 
 
 ## Prerequisites
- [SQLite Studio](https://sqlitestudio.pl/index.rvt?act=download) installed.
+Download/Install [SQLite Studio](https://sqlitestudio.pl/index.rvt?act=download) 
 
-A REST client alike [Insomnia](https://insomnia.rest/download/)
+Will need a REST client like [Insomnia](https://insomnia.rest/download/)
 
 Create [Heroku] account for production deployment (https://www.heroku.com/)
 
