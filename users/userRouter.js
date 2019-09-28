@@ -100,9 +100,9 @@ router.get('/drones', (req, res) => {
   //POST add  a drone
   router.post('/add-drone', (req, res) => {
     const addDrone = req.body;
-    Users.add(addDrone)
-    .then(user => {
-        res.status(201).json(user);
+    Users.addByUsername(addDrone)
+    .then(name => {
+        res.status(201).json(name);
     })
     .catch(err => {
         res.status(500).json({
