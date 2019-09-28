@@ -51,11 +51,11 @@ router.get('/user', validateUserId, (req, res) => {
 
 //Put user
 router.put('/users/:id', validateUser, validateUserId, (req, res) => {
-    const email = req.params;
+    const { id } = req.params;
     const changes = req.body;
-        Users.update(email, changes)
+        Users.update(changes, id)
         .then(post => {
-            res.status(201).json(post);
+            res.status(201).json({ updated: post });
         })
         .catch(err => {
             res.status(500).json({
@@ -67,10 +67,14 @@ router.put('/users/:id', validateUser, validateUserId, (req, res) => {
 
 //DELETE user
 router.delete('/user:id', validateUserId, (req, res) => {
-    const user = req.param;
-        Users.remove(user)
+    const {id} = req.params;
+        Users.remove(id)
         .then(deleted => {
+            if (deleted) {
             res.status(200).json({removed: deleted});
+        } else {
+            res.status(404).json({ message: 'Could not find post with given id' }); 
+        }
         })
         .catch(err => {
         res.status(500).json({

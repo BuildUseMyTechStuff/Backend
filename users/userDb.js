@@ -61,16 +61,16 @@ function findById(id) {
 }
 
 
-function update(id, user) {
+function update(changes, id) {
   return db('users-data')
-    .where('id', Number(id))
-    .update(user);
+    .where({ id: id })
+    .update(changes);
 }
 
-function remove(user) {
+function remove(id) {
   return db('users-data')
-    // .where({ id: id })
-    .del(user);
+    .where({ id: id })
+    .del();
 }
 
 

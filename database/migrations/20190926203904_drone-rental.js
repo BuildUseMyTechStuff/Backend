@@ -68,6 +68,10 @@ exports.up = function(knex) {
   };
   
   exports.down = function(knex) {
-      return knex.schema.dropTableIfExists('drone-rental');
+      return knex.schema
+      .dropTableIfExists('addDrone')
+      .dropTableIfExists('renters')
+      .dropTableIfExists('equipment owners')
+      .dropTableIfExists('drone-rental');
   };
   
