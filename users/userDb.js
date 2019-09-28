@@ -20,9 +20,9 @@ function find() {
 //   return db('drone-rental').select("id", "Name", "Model", "Brand", "Purpose", "Experience Level", "Cost", "Link", "Photographer");
 // }
 
-function findByUsername(email) {
+function findByUsername(id) {
   return db('users-data')
-    .where({ email })
+    .where({ id })
 }
 
 function findResourceById() {

@@ -35,19 +35,23 @@ router.get('/', (req, res) => {
 });
 
 //GET user by Id
-router.get('/user', validateUserId, (req, res) => {
-    const email  = req.params;
-    Users.findByUsername(email)
+router.get('/:id/user', validateUserId, (req, res) => {
+    const { id } = req.params;
+
+    Users.findByUsername(id)
     .then(user => {
-        res.status(200).json(user);
+      if (user) {
+        res.json(user);
+      } else {
+        res.status(404).json({ message: 'Could not find user.' })
+      }
     })
     .catch(err => {
-        res.status(500).json({
-            err:err,
-            message: 'Error retrieving user.'
-        });
+      res.status(500).json({
+        err: err,  
+        message: 'Error retrieving user.' });
     });
-});
+  });
 
 //Put user
 router.put('/users/:id', validateUser, validateUserId, (req, res) => {
