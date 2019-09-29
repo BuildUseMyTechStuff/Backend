@@ -54,7 +54,7 @@ router.get('/:id/user', validateUserId, (req, res) => {
   });
 
 //Put user
-router.put('/users/:id', validateUser, validateUserId, (req, res) => {
+router.put('/user/:id', validateUser, validateUserId, (req, res) => {
     const { id } = req.params;
     const changes = req.body;
         Users.update(changes, id)
@@ -93,7 +93,7 @@ router.get('/drones', (req, res) => {
     let dronerental = req.params;
     Users.findResourceById(dronerental)
     .then(name => {
-        console.log('dronerental', dronerental)
+        // console.log('dronerental', dronerental)
       res.status(200).json(name);
     })
     .catch(error => {
@@ -102,7 +102,32 @@ router.get('/drones', (req, res) => {
   });
 
 
-//GET list of available/rented drones
+//POST list of available
+router.post('/availabledrones', (req, res) => {
+    const equipmentowners = req.body;
+    Users.addAvailableDrone(equipmentowners)
+    .then(availabledrones => {
+        console.log('availabledrones', availabledrones)
+      res.status(200).json({availabledrones});
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+  });    
+    
+//POST list  of rented drones
+router.post('/renteddrones', (req, res) => {
+    const equipmentowners = req.body;
+    Users.addRentedDrone(equipmentowners)
+    .then(renteddrones => {
+        console.log('renteddrones', renteddrones)
+      res.status(200).json({renteddrones});
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+  }); 
+
 
 
   //POST add  a drone
@@ -110,7 +135,7 @@ router.get('/drones', (req, res) => {
     const addDrone = req.body;
     Users.addByUsername(addDrone)
     .then(name => {
-        res.status(201).json(name);
+        res.status(201).json({ addDrone: name });
     })
     .catch(err => {
         res.status(500).json({

@@ -30,16 +30,12 @@ exports.up = function(knex) {
       })
 
 
-    .createTable('equipment owners', tbl => {
+    .createTable('equipment-owners', tbl => {
       tbl.increments()
   
       tbl
-        .string('available drones', 128)
+        .string('availabledrones', 128)
         .notNullable();
-      tbl
-        .string('rented drones')
-        .notNullable();
-
       })
 
   
@@ -47,31 +43,44 @@ exports.up = function(knex) {
       tbl.increments()
 
       tbl
-        .string('rented drones')
+        .string('renteddrones')
         .notNullable();
 
       })
 
     .createTable('addDrone', tbl => {
-      tbl.increments()
-
       tbl
-        .string('name')
+        .string('Name', 100)
         .notNullable();
       tbl
-        .string('model')
+        .string('Model', 100)
         .notNullable();
       tbl
-        .string('brand')
+        .string('Brand', 100)
+        .notNullable();
+      tbl
+      .string('Purpose', 300)
+      .notNullable();
+      tbl
+      .string('ExperienceLevel')
+      .notNullable();
+      tbl
+        .integer('Cost')
+        .notNullable();
+      tbl
+        .string('Link', 300)
+        .notNullable();
+      tbl
+        .string('Photographer', 200)
         .notNullable();
       })
-  };
+};
   
   exports.down = function(knex) {
       return knex.schema
       .dropTableIfExists('addDrone')
       .dropTableIfExists('renters')
-      .dropTableIfExists('equipment owners')
+      .dropTableIfExists('equipment-owners')
       .dropTableIfExists('drone-rental');
   };
   

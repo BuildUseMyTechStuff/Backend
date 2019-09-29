@@ -5,6 +5,8 @@ const db = require('../database/dbConfig.js');
 module.exports = {
   add,
   addByUsername,
+  addAvailableDrone,
+  addRentedDrone,
   find,
   findByUsername,
   findResourceById,
@@ -16,9 +18,6 @@ function find() {
   return db('users-data').select('full_name', 'email', 'password');
 }
 
-// function find() {
-//   return db('drone-rental').select("id", "Name", "Model", "Brand", "Purpose", "Experience Level", "Cost", "Link", "Photographer");
-// }
 
 function findByUsername(id) {
   return db('users-data')
@@ -32,10 +31,16 @@ function findResourceById() {
     
 }
 
-// function findByUsername(name) {
-//   return db('drone-rental')
-//   .where({ name })
-// }
+function addAvailableDrone(availabledrones) {
+  return db('equipment-owners')
+  .insert(availabledrones)
+}
+
+function addRentedDrone(renteddrones) {
+  return db('renters')
+  .insert(renteddrones)
+}
+
 
 function add(email) {
   return db('users-data')
@@ -47,7 +52,7 @@ function add(email) {
 }
 
 function addByUsername(dronerental) {
-  return db('drone-rental')
+  return db('addDrone')
     .insert(dronerental)
     // .then(res => {
     //   const name = res[0];
