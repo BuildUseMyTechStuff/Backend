@@ -30,7 +30,7 @@ exports.up = function(knex) {
       })
 
 
-    .createTable('equipment-owners', tbl => {
+    .createTable('equipment_owners', tbl => {
       tbl.increments()
   
       tbl

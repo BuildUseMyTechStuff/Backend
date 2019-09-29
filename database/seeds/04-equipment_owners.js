@@ -1,7 +1,7 @@
 
 exports.seed = function(knex) {
       // Inserts seed entries
-      return knex('equipment-owners').insert([
+      return knex('equipment_owners').insert([
         {
           AvailableDrones: "DJI Phantom 1",
           AvailableDrones: "DJI Phantom 2",

@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
 router.get('/:id/user', validateUserId, (req, res) => {
     const { id } = req.params;
 
-    Users.findByUsername(id)
+    Users.findByUserId(id)
     .then(user => {
       if (user) {
         res.json(user);
@@ -71,7 +71,7 @@ router.put('/user/:id', validateUser, validateUserId, (req, res) => {
 
 //DELETE user
 router.delete('/user:id', validateUserId, (req, res) => {
-    const {id} = req.params;
+    const { id } = req.params;
         Users.remove(id)
         .then(deleted => {
             if (deleted) {
@@ -91,6 +91,7 @@ router.delete('/user:id', validateUserId, (req, res) => {
 //GET all drone rentals
 router.get('/drones', (req, res) => {
     let dronerental = req.params;
+    
     Users.findResourceById(dronerental)
     .then(name => {
         // console.log('dronerental', dronerental)
@@ -104,10 +105,10 @@ router.get('/drones', (req, res) => {
 
 //POST list of available
 router.post('/availabledrones', (req, res) => {
-    let equipmentowners = req.body;
-    Users.addAvailableDrone(equipmentowners)
+    let equipment_owners = req.body;
+    Users.addAvailableDrone(equipment_owners)
     .then(availabledrones => {
-        console.log('availabledrones', availabledrones)
+        // console.log('availabledrones', availabledrones)
       res.status(200).json({availabledrones});
     })
     .catch(error => {

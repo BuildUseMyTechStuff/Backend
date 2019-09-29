@@ -9,6 +9,7 @@ module.exports = {
   addRentedDrone,
   find,
   findByUsername,
+  findByUserId,
   findResourceById,
   update,
   remove,
@@ -24,13 +25,18 @@ function findByUsername(email) {
     .where({ email })
 }
 
-function findResourceById() {
-  return db('drone-rental')
+function findByUserId(id) {
+  return db('users-data')
+    .where({ id })
 }
 
-function addAvailableDrone(availabledrones) {
-  return db('equipment-owners')
-  .insert(availabledrones)
+function findResourceById() {
+  return db('addDrone')
+}
+
+function addAvailableDrone(equipment_owners) {
+  return db('equipment_owners')
+  .insert(equipment_owners)
 }
 
 function addRentedDrone(renteddrones) {
