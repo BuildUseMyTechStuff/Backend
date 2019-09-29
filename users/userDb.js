@@ -26,9 +26,6 @@ function findByUsername(id) {
 
 function findResourceById() {
   return db('drone-rental')
-    // .where({ dronerental });
-    
-    
 }
 
 function addAvailableDrone(availabledrones) {
@@ -54,10 +51,6 @@ function add(email) {
 function addByUsername(dronerental) {
   return db('addDrone')
     .insert(dronerental)
-    // .then(res => {
-    //   const name = res[0];
-    //   return findById(name);
-    // });
 }
 
 function findById(id) {

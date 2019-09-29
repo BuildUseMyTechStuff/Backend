@@ -104,7 +104,7 @@ router.get('/drones', (req, res) => {
 
 //POST list of available
 router.post('/availabledrones', (req, res) => {
-    const equipmentowners = req.body;
+    let equipmentowners = req.body;
     Users.addAvailableDrone(equipmentowners)
     .then(availabledrones => {
         console.log('availabledrones', availabledrones)
@@ -117,7 +117,7 @@ router.post('/availabledrones', (req, res) => {
     
 //POST list  of rented drones
 router.post('/renteddrones', (req, res) => {
-    const equipmentowners = req.body;
+    let equipmentowners = req.body;
     Users.addRentedDrone(equipmentowners)
     .then(renteddrones => {
         console.log('renteddrones', renteddrones)
