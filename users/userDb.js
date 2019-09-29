@@ -19,9 +19,9 @@ function find() {
 }
 
 
-function findByUsername(id) {
+function findByUsername(email) {
   return db('users-data')
-    .where({ id })
+    .where({ email })
 }
 
 function findResourceById() {
